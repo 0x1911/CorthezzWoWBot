@@ -157,6 +157,10 @@ namespace Utilities
             }
         }
 
+        /// <summary>
+        /// Return machine current uptime in seconds
+        /// </summary>
+        /// <returns>427809</returns>
         public static TimeSpan GetSystemUpTime()
         {
             var ticks = Stopwatch.GetTimestamp();
@@ -167,7 +171,7 @@ namespace Utilities
         }
 
         /// <summary>
-        /// Return a human readable time string
+        /// Returns a human readable time string
         /// </summary>
         /// <returns>01d, 12h, 30m, 26s</returns>
         public static string GetSystemUpTimeString()

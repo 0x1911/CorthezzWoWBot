@@ -41,7 +41,7 @@ namespace BotTemplate.Engines
             thrWorker.Start();
             Exchange.CurrentEngine = name;
             Exchange.IsEngineRunning = true;
-            BmWrapper.memory.WriteUInt(0x00C7B2A4, 0);
+           // BmWrapper.memory.WriteUInt(0x00C7B2A4, 0);
             ObjectManager.ExecuteOnce = true;
         }
 
@@ -70,7 +70,7 @@ namespace BotTemplate.Engines
                 //}
                 //Thread.Sleep((int)sleepTime);
             }
-            BmWrapper.memory.WriteUInt(0x00C7B2A4, 0x0F110B73);
+           // BmWrapper.memory.WriteUInt(0x00C7B2A4, 0x0F110B73);
         }
 
         public void StopEngine()
@@ -82,7 +82,7 @@ namespace BotTemplate.Engines
             Running = false;
             Exchange.IsEngineRunning = false;
             Exchange.CurrentEngine = "None";
-            BmWrapper.memory.WriteUInt(0x00C7B2A4, 0x0F110B73);
+           // BmWrapper.memory.WriteUInt(0x00C7B2A4, 0x0F110B73);
         }
     }
 }

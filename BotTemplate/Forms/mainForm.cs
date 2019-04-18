@@ -7,10 +7,7 @@ using System.Threading;
 using BotTemplate.Engines.Grindbot;
 using BotTemplate.Engines.CustomClass;
 using System.Runtime.InteropServices;
-using System.ComponentModel;
 using BotTemplate.Engines.Explorer;
-using System.Linq;
-using BotTemplate.Engines.Mails;
 using System.IO;
 using BotTemplate.Constants;
 using BotTemplate.Engines.Assist;
@@ -19,8 +16,6 @@ using BotTemplate.Engines.Fishbot;
 using BotTemplate.Engines.Master;
 using BotTemplate.Engines.Networking;
 using BotTemplate.Engines.Stockades;
-using BotTemplate.Engines.Dupe;
-using System.Diagnostics;
 using System.Text;
 
 namespace BotTemplate.Forms
@@ -140,47 +135,15 @@ namespace BotTemplate.Forms
             {
                 if (!Exchange.IsEngineRunning)
                 {
-                    if (rbCreate.Checked)
-                    {
-                        startCreate();
-                    }
                 }
+
                 if (ObjectManager.playerPtr != 0)
                 {
                     if (Data.LoadSettings())
                     {
                         if (!Exchange.IsEngineRunning)
                         {
-                            if (rZgFarm.Checked)
-                            {
-                                startZgFarm();
-                            }
-
-                            if (rbZgAssist.Checked)
-                            {
-                                startZgAssist();
-                            }
-
-                            if (rbSpawn.Checked)
-                            {
-                                startSpawn();
-                            }
-
-                            if (rbDupe.Checked)
-                            {
-                                startDupe();
-                            }
-
-                            if (rbStock.Checked)
-                            {
-                                startStock();
-                            }
-
-                            if (rbSendMails.Checked)
-                            {
-                                startMail();
-                            }
-
+                        
                             if (rGrindbot.Checked)
                             {
                                 startGrind();
@@ -293,106 +256,7 @@ namespace BotTemplate.Forms
             }
         }
 
-        private static void startStock()
-        {
-            if (Stockades.engine == null)
-            {
-                bool success = Stockades.Init();
-
-                if (success == true)
-                {
-                    Stockades.engine.StartEngine(Stockades.name);
-                }
-            }
-        }
-
-        private static void startDupe()
-        {
-            if (DupeEngine.engine == null)
-            {
-                DialogResult dialogResult = MessageBox.Show("Do you want to vendor the items?", "Vendor?", MessageBoxButtons.YesNo);
-                DupeEngine.engine = new Dupe();
-                DupeEngine.engine.StartEngine("Duper", dialogResult == DialogResult.Yes);
-            }
-        }
-
-        private static void startSpawn()
-        {
-            if (SpawnerEngine.engine == null)
-            {
-                SpawnerEngine.engine = new Spawner();
-                SpawnerEngine.engine.StartEngine("Spawner");
-            }
-        }
-
-        private static void startZgFarm()
-        {
-            if (ZgFarmEngine.engine == null)
-            {
-                ZgFarmEngine.engine = new ZgFarm();
-                ZgFarmEngine.engine.StartEngine("ZG");
-            }
-        }
-
-        private static void startZgAssist()
-        {
-            if (ZgAssistEngine.engine == null)
-            {
-                ZgAssistEngine.engine = new ZgAssist();
-                ZgAssistEngine.engine.StartEngine("ZG Assist");
-            }
-        }
-
-        private static void startMail()
-        {
-            if (MailEngine.engine == null)
-            {
-                //string chars = "";
-                //foreach (string x in Data.MailerCharacters)
-                //{
-                //    chars += x + "\n";
-                //}
-
-                //DialogResult dialogResult = MessageBox.Show("Gold will be distributed over:\n" +
-                //chars, "Sure?", MessageBoxButtons.YesNo);
-                //if (dialogResult == DialogResult.Yes)
-                //{
-                //    MailEngine.engine = new Mail();
-                //    MailEngine.engine.StartEngine(MailEngine.name);
-                //}
-
-                MailEngine.engine = new Mail();
-                MailEngine.engine.StartEngine(MailEngine.name);
-            }
-        }
-
-        private static void startCreate()
-        {
-            if (CreateEngine.engine == null)
-            {
-                if (File.Exists(@".\Create.txt"))
-                {
-                    string[] tmpChars = File.ReadAllLines(@".\Create.txt");
-                    string tmpStringChars = "";
-                    foreach (string x in tmpChars)
-                    {
-                        tmpStringChars += x + "\n";
-                    }
-                    DialogResult dialogResult = MessageBox.Show("Following Characters will be created:\n" +
-                    tmpStringChars, "Sure?", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CreateEngine.engine = new Create(tmpChars);
-                        CreateEngine.engine.StartEngine(CreateEngine.name);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Create.txt doesnt exist in " + Application.ExecutablePath.ToString());
-                }
-            }
-        }
-
+        
         private static void startExplorer()
         {
             if (ExplorerEngine.engine == null)
@@ -462,54 +326,6 @@ namespace BotTemplate.Forms
             }
         }
 
-        private static void stopDupe()
-        {
-            if (DupeEngine.engine != null)
-            {
-                DupeEngine.engine.StopEngine();
-            }
-        }
-
-        private static void stopSpawn()
-        {
-            if (SpawnerEngine.engine != null)
-            {
-                SpawnerEngine.engine.StopEngine();
-            }
-        }
-
-        private static void stopZgFarm()
-        {
-            if (ZgFarmEngine.engine != null)
-            {
-                ZgFarmEngine.engine.StopEngine();
-            }
-        }
-
-        private static void stopZgAssist()
-        {
-            if (ZgAssistEngine.engine != null)
-            {
-                ZgAssistEngine.engine.StopEngine();
-            }
-        }
-
-        private static void stopMailer()
-        {
-            if (MailEngine.engine != null)
-            {
-                MailEngine.engine.StopEngine();
-            }
-        }
-
-        private static void stopStock()
-        {
-            if (Stockades.engine != null)
-            {
-                Stockades.engine.StopEngine();
-                Stockades.Dispose();
-            }
-        }
 
         private static void startObjectManager()
         {
@@ -565,16 +381,10 @@ namespace BotTemplate.Forms
             if (Exchange.IsEngineRunning)
             {
                 stopGrind();
-                stopZgFarm();
-                stopZgAssist();
-                stopSpawn();
-                stopMailer();
                 stopMaster();
                 stopAssist();
                 stopFishbot();
-                stopDupe();
                 stopExplorer();
-                stopStock();
                 Calls.StopRunning();
             }
             else

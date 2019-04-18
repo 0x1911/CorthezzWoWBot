@@ -47,19 +47,13 @@
             this.rExplorer = new System.Windows.Forms.RadioButton();
             this.teleButton = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.rbSendMails = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.rbZgAssist = new System.Windows.Forms.RadioButton();
-            this.rZgFarm = new System.Windows.Forms.RadioButton();
-            this.rbSpawn = new System.Windows.Forms.RadioButton();
-            this.rbDupe = new System.Windows.Forms.RadioButton();
-            this.rbStock = new System.Windows.Forms.RadioButton();
             this.lVersion = new System.Windows.Forms.Label();
             this.rbFishbot = new System.Windows.Forms.RadioButton();
-            this.rbCreate = new System.Windows.Forms.RadioButton();
             this.rbAssist = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.mtbItem = new System.Windows.Forms.MaskedTextBox();
@@ -80,7 +74,6 @@
             this.tbLog = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -121,7 +114,7 @@
             // rGrindbot
             // 
             this.rGrindbot.AutoSize = true;
-            this.rGrindbot.Location = new System.Drawing.Point(190, 139);
+            this.rGrindbot.Location = new System.Drawing.Point(202, 174);
             this.rGrindbot.Name = "rGrindbot";
             this.rGrindbot.Size = new System.Drawing.Size(65, 17);
             this.rGrindbot.TabIndex = 7;
@@ -236,7 +229,7 @@
             // rExplorer
             // 
             this.rExplorer.AutoSize = true;
-            this.rExplorer.Location = new System.Drawing.Point(190, 159);
+            this.rExplorer.Location = new System.Drawing.Point(202, 197);
             this.rExplorer.Name = "rExplorer";
             this.rExplorer.Size = new System.Drawing.Size(63, 17);
             this.rExplorer.TabIndex = 28;
@@ -265,17 +258,6 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // rbSendMails
-            // 
-            this.rbSendMails.AutoSize = true;
-            this.rbSendMails.Location = new System.Drawing.Point(190, 179);
-            this.rbSendMails.Name = "rbSendMails";
-            this.rbSendMails.Size = new System.Drawing.Size(107, 17);
-            this.rbSendMails.TabIndex = 32;
-            this.rbSendMails.TabStop = true;
-            this.rbSendMails.Text = "Neck Deenchant";
-            this.rbSendMails.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -291,17 +273,10 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.rbZgAssist);
-            this.tabPage1.Controls.Add(this.rZgFarm);
-            this.tabPage1.Controls.Add(this.rbSpawn);
-            this.tabPage1.Controls.Add(this.rbDupe);
-            this.tabPage1.Controls.Add(this.rbStock);
             this.tabPage1.Controls.Add(this.lVersion);
             this.tabPage1.Controls.Add(this.rbFishbot);
-            this.tabPage1.Controls.Add(this.rbCreate);
             this.tabPage1.Controls.Add(this.rbAssist);
             this.tabPage1.Controls.Add(this.lPid);
-            this.tabPage1.Controls.Add(this.rbSendMails);
             this.tabPage1.Controls.Add(this.bAttach);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.bDeattach);
@@ -327,74 +302,19 @@
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // rbZgAssist
-            // 
-            this.rbZgAssist.AutoSize = true;
-            this.rbZgAssist.Location = new System.Drawing.Point(60, 299);
-            this.rbZgAssist.Name = "rbZgAssist";
-            this.rbZgAssist.Size = new System.Drawing.Size(70, 17);
-            this.rbZgAssist.TabIndex = 41;
-            this.rbZgAssist.TabStop = true;
-            this.rbZgAssist.Text = "ZG Assist";
-            this.rbZgAssist.UseVisualStyleBackColor = true;
-            // 
-            // rZgFarm
-            // 
-            this.rZgFarm.AutoSize = true;
-            this.rZgFarm.Location = new System.Drawing.Point(138, 299);
-            this.rZgFarm.Name = "rZgFarm";
-            this.rZgFarm.Size = new System.Drawing.Size(40, 17);
-            this.rZgFarm.TabIndex = 40;
-            this.rZgFarm.TabStop = true;
-            this.rZgFarm.Text = "ZG";
-            this.rZgFarm.UseVisualStyleBackColor = true;
-            // 
-            // rbSpawn
-            // 
-            this.rbSpawn.AutoSize = true;
-            this.rbSpawn.Location = new System.Drawing.Point(190, 299);
-            this.rbSpawn.Name = "rbSpawn";
-            this.rbSpawn.Size = new System.Drawing.Size(67, 17);
-            this.rbSpawn.TabIndex = 39;
-            this.rbSpawn.TabStop = true;
-            this.rbSpawn.Text = "Spawner";
-            this.rbSpawn.UseVisualStyleBackColor = true;
-            // 
-            // rbDupe
-            // 
-            this.rbDupe.AutoSize = true;
-            this.rbDupe.Location = new System.Drawing.Point(190, 279);
-            this.rbDupe.Name = "rbDupe";
-            this.rbDupe.Size = new System.Drawing.Size(51, 17);
-            this.rbDupe.TabIndex = 38;
-            this.rbDupe.TabStop = true;
-            this.rbDupe.Text = "Dupe";
-            this.rbDupe.UseVisualStyleBackColor = true;
-            // 
-            // rbStock
-            // 
-            this.rbStock.AutoSize = true;
-            this.rbStock.Location = new System.Drawing.Point(190, 259);
-            this.rbStock.Name = "rbStock";
-            this.rbStock.Size = new System.Drawing.Size(76, 17);
-            this.rbStock.TabIndex = 37;
-            this.rbStock.TabStop = true;
-            this.rbStock.Text = "Stockades";
-            this.rbStock.UseVisualStyleBackColor = true;
-            // 
             // lVersion
             // 
             this.lVersion.AutoSize = true;
             this.lVersion.Location = new System.Drawing.Point(245, 334);
             this.lVersion.Name = "lVersion";
-            this.lVersion.Size = new System.Drawing.Size(34, 13);
+            this.lVersion.Size = new System.Drawing.Size(40, 13);
             this.lVersion.TabIndex = 36;
-            this.lVersion.Text = "v1.09";
+            this.lVersion.Text = "v1.09a";
             // 
             // rbFishbot
             // 
             this.rbFishbot.AutoSize = true;
-            this.rbFishbot.Location = new System.Drawing.Point(190, 239);
+            this.rbFishbot.Location = new System.Drawing.Point(202, 151);
             this.rbFishbot.Name = "rbFishbot";
             this.rbFishbot.Size = new System.Drawing.Size(59, 17);
             this.rbFishbot.TabIndex = 35;
@@ -402,21 +322,10 @@
             this.rbFishbot.Text = "Fishbot";
             this.rbFishbot.UseVisualStyleBackColor = true;
             // 
-            // rbCreate
-            // 
-            this.rbCreate.AutoSize = true;
-            this.rbCreate.Location = new System.Drawing.Point(190, 219);
-            this.rbCreate.Name = "rbCreate";
-            this.rbCreate.Size = new System.Drawing.Size(56, 17);
-            this.rbCreate.TabIndex = 34;
-            this.rbCreate.TabStop = true;
-            this.rbCreate.Text = "Create";
-            this.rbCreate.UseVisualStyleBackColor = true;
-            // 
             // rbAssist
             // 
             this.rbAssist.AutoSize = true;
-            this.rbAssist.Location = new System.Drawing.Point(190, 199);
+            this.rbAssist.Location = new System.Drawing.Point(202, 220);
             this.rbAssist.Name = "rbAssist";
             this.rbAssist.Size = new System.Drawing.Size(84, 17);
             this.rbAssist.TabIndex = 33;
@@ -449,6 +358,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dev";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(101, 287);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(122, 41);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -611,7 +530,7 @@
             // 
             // tbLog
             // 
-            this.tbLog.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLog.Location = new System.Drawing.Point(18, 18);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
@@ -639,16 +558,6 @@
             this.label1.Size = new System.Drawing.Size(257, 221);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(101, 287);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 41);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // mainForm
             // 
@@ -694,7 +603,6 @@
         private System.Windows.Forms.RadioButton rExplorer;
         private System.Windows.Forms.Button teleButton;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.RadioButton rbSendMails;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -707,7 +615,6 @@
         private System.Windows.Forms.Button bViewObjects;
         private System.Windows.Forms.RadioButton rbAssist;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.RadioButton rbCreate;
         private System.Windows.Forms.RadioButton rbFishbot;
         private System.Windows.Forms.Button bFromFile;
         private System.Windows.Forms.Button bToFile;
@@ -715,14 +622,9 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.Label lVersion;
-        private System.Windows.Forms.RadioButton rbStock;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton rbDupe;
-        private System.Windows.Forms.RadioButton rbSpawn;
-        private System.Windows.Forms.RadioButton rZgFarm;
         private System.Windows.Forms.Button bAddUp;
-        private System.Windows.Forms.RadioButton rbZgAssist;
         private System.Windows.Forms.MaskedTextBox mtbItem;
         private System.Windows.Forms.Button bGetCount;
         private System.Windows.Forms.Button button1;

@@ -67,9 +67,6 @@
     <Compile Include="Constants\Offsets.cs" />
     <Compile Include="Engines\Assist\States\stateAssistWait.cs" />
     <Compile Include="Engines\Assist\States\stateTeleToMaster.cs" />
-    <Compile Include="Engines\ZgAssist\ZgAssist.cs" />
-    <Compile Include="Engines\ZgFarm\ZgFarm.cs" />
-    <Compile Include="Engines\Spawner\Spawner.cs" />
     <Compile Include="Engines\Explorer\Explorer.cs" />
     <Compile Include="Engines\Fishbot\States\stateFisherWaitForBite.cs" />
     <Compile Include="Engines\Fishbot\States\stateFisherCastFishing.cs" />
@@ -87,7 +84,6 @@
     <Compile Include="Engines\Assist\States\stateAssistNeedRest.cs" />
     <Compile Include="Engines\Assist\States\stateAssistVendor.cs" />
     <Compile Include="Engines\Assist\States\stateAssistWalk.cs" />
-    <Compile Include="Engines\Dupe\Dupe.cs" />
     <Compile Include="Engines\Master\Master.cs" />
     <Compile Include="Engines\Master\MasterContainer.cs" />
     <Compile Include="Engines\Master\MasterFightMovement.cs" />
@@ -105,7 +101,6 @@
     <Compile Include="Engines\Master\States\stateMasterUnstuck.cs" />
     <Compile Include="Engines\Master\States\stateMasterVendor.cs" />
     <Compile Include="Engines\Master\States\stateMasterWalk.cs" />
-    <Compile Include="Engines\Mail\Mail.cs" />
     <Compile Include="Engines\Networking\clientConnect.cs" />
     <Compile Include="Engines\Networking\clientListen.cs" />
     <Compile Include="Engines\Networking\slaveStates.cs" />

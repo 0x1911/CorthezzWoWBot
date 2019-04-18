@@ -350,7 +350,22 @@ namespace BotTemplate.Objects
                 }
             }
         }
-        
+
+        internal int energy
+        {
+            get
+            {
+                try
+                {
+                    if (baseAdd == 0 || guid == 0) return 0;
+                    return BmWrapper.memory.ReadInt(descriptor + (uint)Offsets.descriptors.Energy);
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
         #endregion
     }
 }

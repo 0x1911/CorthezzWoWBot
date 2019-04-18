@@ -144,6 +144,7 @@ namespace BotTemplate.Constants
             FactionId = 0x8C,
             Mana = 0x5C,
             MaxMana = 0x74,
+            Energy = 0x68,
             Rage = 0x60,
             TargetGuid = 0x40,
             CorpseOwnedBy = 0x18,

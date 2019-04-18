@@ -51,6 +51,14 @@ namespace BotTemplate.Engines.CustomClass
             }
         }
 
+        protected virtual int playerEnergy
+        {
+            get
+            {
+                return ObjectManager.PlayerObject.energy;
+            }
+        }
+
         protected virtual void ApplyMainhand(string name)
         {
             Ingame.EnchantMainHand(name);

@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotTemplate", "BotTemplate\BotTemplate.csproj", "{7F4EA285-7211-410C-B5FA-2F3AE61AEEDB}"
 EndProject
 Global
@@ -9,11 +11,15 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7F4EA285-7211-410C-B5FA-2F3AE61AEEDB}.Debug|x86.ActiveCfg = Release|x86
+		{7F4EA285-7211-410C-B5FA-2F3AE61AEEDB}.Debug|x86.ActiveCfg = Debug|x86
+		{7F4EA285-7211-410C-B5FA-2F3AE61AEEDB}.Debug|x86.Build.0 = Debug|x86
 		{7F4EA285-7211-410C-B5FA-2F3AE61AEEDB}.Release|x86.ActiveCfg = Release|x86
 		{7F4EA285-7211-410C-B5FA-2F3AE61AEEDB}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {407020B4-5E93-4993-BE01-73A829511367}
 	EndGlobalSection
 EndGlobal

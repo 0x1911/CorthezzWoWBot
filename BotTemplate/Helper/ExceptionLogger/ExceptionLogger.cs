@@ -157,13 +157,32 @@ namespace Utilities
             }
         }
 
-        private static TimeSpan GetSystemUpTime()
+        public static TimeSpan GetSystemUpTime()
         {
-            PerformanceCounter upTime = new PerformanceCounter("System", "System Up Time");
-            upTime.NextValue();
-            return TimeSpan.FromSeconds(upTime.NextValue());
+            var ticks = Stopwatch.GetTimestamp();
+            var uptime = ((double)ticks) / Stopwatch.Frequency;
+            var uptimeSpan = TimeSpan.FromSeconds(uptime);
+
+            return uptimeSpan;
         }
 
+        /// <summary>
+        /// Return a human readable time string
+        /// </summary>
+        /// <returns>01d, 12h, 30m, 26s</returns>
+        public static string GetSystemUpTimeString()
+        {
+            TimeSpan t = TimeSpan.FromSeconds(GetSystemUpTime().TotalSeconds);
+
+            string answer = string.Format("{0:D2}d, {1:D2}h, {2:D2}m, {3:D2}s",
+                            t.Days,
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds);
+
+            return answer;
+        }
+        
         // use to get memory available
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         private class MEMORYSTATUSEX
@@ -202,7 +221,7 @@ namespace Utilities
             error.AppendLine("OS:                " + Environment.OSVersion.ToString());
             error.AppendLine("Culture:           " + CultureInfo.CurrentCulture.Name);
             error.AppendLine("Resolution:        " + SystemInformation.PrimaryMonitorSize.ToString());
-            error.AppendLine("System up time:    " + GetSystemUpTime());
+            error.AppendLine("System up time:    " + GetSystemUpTimeString());
             error.AppendLine("App up time:       " +
               (DateTime.Now - Process.GetCurrentProcess().StartTime).ToString());
 

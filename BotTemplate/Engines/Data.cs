@@ -85,7 +85,7 @@ namespace BotTemplate.Engines
         #region load the settings
         internal static bool LoadSettings()
         {
-            if (settingsExist && protectedExist && mailerExist)
+            if (settingsExist)
             {
                 string tmpSettings = Tools.DecodeFrom64(File.ReadAllText(settingsPath));
                 string tmpSettings2 = Tools.DecodeFrom64(File.ReadAllText(protectedPath));
@@ -116,43 +116,20 @@ namespace BotTemplate.Engines
                         StopOnVendorFail = Convert.ToBoolean(settings[16].Trim());
                         Port = Convert.ToInt32(settings[17].Trim());
                     }
-
-                    {
-                        List<string> tmpProtected = new List<string>();
-                        foreach (string x in settings2)
-                        {
-                            string y = x.Trim();
-                            if (y != "")
-                            {
-                                tmpProtected.Add(y.Trim());
-                            }
-                        }
-                        ProtectedItems = tmpProtected.ToArray();
-                    }
-
-                    {
-                        List<string> tmpMailer = new List<string>();
-                        foreach (string x in settings3)
-                        {
-                            string y = x.Trim();
-                            if (y != "")
-                            {
-                                tmpMailer.Add(y.Trim());
-                            }
-                        }
-                        MailerCharacters = tmpMailer.ToArray();
-                    }
                 }
                 catch
                 {
-                    MessageBox.Show("Settings are corrupted. Delete settings.ini and hit configuration");
+                    File.Delete(settingsPath);
+                    Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
+                    MessageBox.Show("Settings are corrupted. Deleted settings.ini and creating new one..");
                     return false;
                 }
                 return true;
             }
             else
             {
-                MessageBox.Show("Hit settings button", "  Couldnt find some settings");
+                Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
+                MessageBox.Show("Couldn't find settings file", "  Created new settings file!");
                 return false;
             }
         }

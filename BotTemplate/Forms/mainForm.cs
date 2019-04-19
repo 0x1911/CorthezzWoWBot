@@ -9,28 +9,26 @@ using BotTemplate.Engines.CustomClass;
 using System.Runtime.InteropServices;
 using BotTemplate.Engines.Explorer;
 using System.IO;
-using BotTemplate.Constants;
 using BotTemplate.Engines.Assist;
-using BotTemplate.Engines.Create;
 using BotTemplate.Engines.Fishbot;
 using BotTemplate.Engines.Master;
 using BotTemplate.Engines.Networking;
-using BotTemplate.Engines.Stockades;
 using System.Text;
-using System.Reflection;
 
 namespace BotTemplate.Forms
 {
     public partial class MainForm : Form
     {
+        private AboutForm AboutForm = new AboutForm();
         public MainForm()
         {
+
             InitializeComponent();
             CCManager.Initialisate();
             CCManager.GetCustomClasses();
             var timer = new System.Windows.Forms.Timer();
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = 2000;
+            timer.Interval = 1000;
             timer.Start();
         }
 
@@ -38,7 +36,9 @@ namespace BotTemplate.Forms
         System.Media.SoundPlayer sound = new System.Media.SoundPlayer(@".\Beep.wav");
         void timer_Tick(object sender, EventArgs e)
         {
-            if (ObjectManager.getObjThread.IsAlive == true)
+            toolStripStatusLabel_TheTime.Text = DateTime.Now.ToString("HH:mm:ss");
+
+            if (ObjectManager.getObjThread.IsAlive)
             {
                 if (ChatReader.Notify)
                 {
@@ -55,7 +55,7 @@ namespace BotTemplate.Forms
                 lPid.Text = "Attached to: " + ObjectManager.playerName;
                 SetWindowText(ObjectManager.playerName);
                 lObjTick.Text = "Manager tick: " + (int)ObjectManager.tickRate + " ms";
-                if (Exchange.IsEngineRunning == true)
+                if (Exchange.IsEngineRunning)
                 {
                     lRunning.Text = "Running: " + Exchange.CurrentEngine;
                     lState.Text = "State: " + Exchange.CurrentState;
@@ -67,7 +67,7 @@ namespace BotTemplate.Forms
                 lPid.Text = "Attached to: -";
                 SetWindowText(null);
             }
-            if (Exchange.IsEngineRunning == false)
+            if (!Exchange.IsEngineRunning)
             {
                 lRunning.Text = "Running: " + Exchange.CurrentEngine;
                 lState.Text = "State: None";
@@ -82,7 +82,7 @@ namespace BotTemplate.Forms
 
         private void bAttach_Click(object sender, EventArgs e)
         {
-            if (ObjectManager.getObjThread.IsAlive == false)
+            if (!ObjectManager.getObjThread.IsAlive)
             {
                 AttachForm att = new AttachForm();
                 att.ShowDialog();
@@ -100,20 +100,20 @@ namespace BotTemplate.Forms
                         }
                         else
                         {
-                            MessageBox.Show("Endscene is already modified, not attaching");
+                            Forms.Log.Add("Endscene is already modified, not attaching!");
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Bot is already attached");
+                Forms.Log.Add("Bot is already attached!");
             }
         }
 
         private void bDeattach_Click(object sender, EventArgs e)
         {
-            if (ObjectManager.getObjThread.IsAlive == true)
+            if (ObjectManager.getObjThread.IsAlive)
             {
                 ShowWindow(BmWrapper.memory.WindowHandle, SW_SHOW);
                 if (!Exchange.IsEngineRunning)
@@ -125,17 +125,21 @@ namespace BotTemplate.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Stop all bots first");
+                    Forms.Log.Add("Stop all bots first!");
                 }
             }
             else
             {
-                MessageBox.Show("Bot is not attached");
+                Forms.Log.Add("Bot is not attached!");
             }
         }
 
         #region Engine Handling - Start & Stop
         private void bStart_Click(object sender, EventArgs e)
+        {
+            StartBot();
+        }
+        private void StartBot()
         {
             if (ObjectManager.getObjThread.IsAlive)
             {
@@ -149,7 +153,7 @@ namespace BotTemplate.Forms
                     {
                         if (!Exchange.IsEngineRunning)
                         {
-                        
+
                             if (rGrindbot.Checked)
                             {
                                 startGrind();
@@ -201,10 +205,15 @@ namespace BotTemplate.Forms
             }
             else
             {
-                MessageBox.Show("Attach Objectmanager first");
+                Forms.Log.Add("Attach Objectmanager first!");
             }
         }
         private void bStopBot_Click(object sender, EventArgs e)
+        {
+            StopBot();
+        }
+
+        private void StopBot()
         {
             if (Exchange.IsEngineRunning)
             {
@@ -217,7 +226,7 @@ namespace BotTemplate.Forms
             }
             else
             {
-                MessageBox.Show("No bot running");
+                Forms.Log.Add("No Bot running!");
             }
         }
 
@@ -613,6 +622,25 @@ namespace BotTemplate.Forms
             //MessageBox.Show("Is crashed: " + ObjectManager.IsWowCrashed().ToString()
             //    + "\nHandles (on attach / current): " + BmWrapper.memory.WindowHandle + " " + Process.GetProcessById(BmWrapper.memory.ProcessId).MainWindowHandle
             //    + "\nWindow class: " + className.ToString());
+        }
+
+        private void startToolStripMenuItemExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void startToolStripMenuItemAbout_Click(object sender, EventArgs e)
+        {
+            this.AboutForm.Show();
+        }
+
+        private void startToolStripMenuItemStart_Click(object sender, EventArgs e)
+        {
+            StartBot();
+        }
+
+        private void startToolStripMenuItemStop_Click(object sender, EventArgs e)
+        {
+            StopBot();
         }
     }
 }

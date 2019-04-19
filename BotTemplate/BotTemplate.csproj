@@ -114,6 +114,12 @@
     <Compile Include="Engines\Stockades\StockadesContainer.cs" />
     <Compile Include="Engines\Stockades\Stockades.cs" />
     <Compile Include="Engines\Stockades\States\stateStockIdle.cs" />
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InputDialog.cs" />
     <Compile Include="Forms\Log.cs" />
     <Compile Include="Forms\ObjectViewerForm.cs">
@@ -206,6 +212,9 @@
     <Compile Include="Objects\UnitObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AttachForm.resx">
       <DependentUpon>AttachForm.cs</DependentUpon>
     </EmbeddedResource>

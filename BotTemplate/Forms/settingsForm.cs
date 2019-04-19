@@ -4,9 +4,9 @@ using BotTemplate.Engines;
 
 namespace BotTemplate.Forms
 {
-    public partial class settingsForm : Form
+    public partial class SettingsForm : Form
     {
-        public settingsForm()
+        public SettingsForm()
         {
             InitializeComponent();
 

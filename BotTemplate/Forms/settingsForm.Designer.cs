@@ -1,6 +1,6 @@
 ﻿namespace BotTemplate.Forms
 {
-    partial class settingsForm
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.

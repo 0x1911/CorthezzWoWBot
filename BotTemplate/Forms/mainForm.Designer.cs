@@ -1,6 +1,6 @@
 ﻿namespace BotTemplate.Forms
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.bAttach = new System.Windows.Forms.Button();
             this.bDeattach = new System.Windows.Forms.Button();
             this.bStart = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lVersion = new System.Windows.Forms.Label();
+            this.lbl_Version = new System.Windows.Forms.Label();
             this.rbFishbot = new System.Windows.Forms.RadioButton();
             this.rbAssist = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -262,7 +262,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lVersion);
+            this.tabPage1.Controls.Add(this.lbl_Version);
             this.tabPage1.Controls.Add(this.rbFishbot);
             this.tabPage1.Controls.Add(this.rbAssist);
             this.tabPage1.Controls.Add(this.lPid);
@@ -290,14 +290,14 @@
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lVersion
+            // lbl_Version
             // 
-            this.lVersion.AutoSize = true;
-            this.lVersion.Location = new System.Drawing.Point(245, 334);
-            this.lVersion.Name = "lVersion";
-            this.lVersion.Size = new System.Drawing.Size(40, 13);
-            this.lVersion.TabIndex = 36;
-            this.lVersion.Text = "v1.09a";
+            this.lbl_Version.AutoSize = true;
+            this.lbl_Version.Location = new System.Drawing.Point(245, 334);
+            this.lbl_Version.Name = "lbl_Version";
+            this.lbl_Version.Size = new System.Drawing.Size(49, 13);
+            this.lbl_Version.TabIndex = 36;
+            this.lbl_Version.Text = "v.0.0.0.0";
             // 
             // rbFishbot
             // 
@@ -608,7 +608,6 @@
         private System.Windows.Forms.Button bLogin;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox tbLog;
-        private System.Windows.Forms.Label lVersion;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bAddUp;
@@ -617,6 +616,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Label lbl_Version;
     }
 }
 

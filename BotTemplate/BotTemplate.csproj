@@ -116,18 +116,13 @@
     <Compile Include="Engines\Stockades\States\stateStockIdle.cs" />
     <Compile Include="Forms\InputDialog.cs" />
     <Compile Include="Forms\Log.cs" />
-    <Compile Include="Forms\objectViewerForm.cs">
+    <Compile Include="Forms\ObjectViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\objectViewerForm.Designer.cs">
-      <DependentUpon>objectViewerForm.cs</DependentUpon>
+    <Compile Include="Forms\ObjectViewerForm.Designer.cs">
+      <DependentUpon>ObjectViewerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\teleportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\teleportForm.Designer.cs">
-      <DependentUpon>teleportForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Helper\MachineInfo.cs" />
     <Compile Include="Helper\SpellSystem\Buff.cs" />
     <Compile Include="Helper\SpellSystem\Cooldown.cs" />
     <Compile Include="Helper\cTimer.cs" />
@@ -156,29 +151,29 @@
     <Compile Include="Engines\Grindbot\States\stateGrindWalk.cs" />
     <Compile Include="Engines\Grindbot\GrindbotContainer.cs" />
     <Compile Include="Engines\State.cs" />
-    <Compile Include="Forms\attachForm.cs">
+    <Compile Include="Forms\AttachForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\attachForm.Designer.cs">
-      <DependentUpon>attachForm.cs</DependentUpon>
+    <Compile Include="Forms\AttachForm.Designer.cs">
+      <DependentUpon>AttachForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\mainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\mainForm.Designer.cs">
-      <DependentUpon>mainForm.cs</DependentUpon>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\settingsForm.cs">
+    <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\settingsForm.Designer.cs">
-      <DependentUpon>settingsForm.cs</DependentUpon>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\whisperForm.cs">
+    <Compile Include="Forms\WhisperForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\whisperForm.Designer.cs">
-      <DependentUpon>whisperForm.cs</DependentUpon>
+    <Compile Include="Forms\WhisperForm.Designer.cs">
+      <DependentUpon>WhisperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\BlackMagic\BMInject.cs" />
     <Compile Include="Helper\BlackMagic\BMMain.cs" />
@@ -211,23 +206,20 @@
     <Compile Include="Objects\UnitObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\attachForm.resx">
-      <DependentUpon>attachForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AttachForm.resx">
+      <DependentUpon>AttachForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\mainForm.resx">
-      <DependentUpon>mainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\objectViewerForm.resx">
-      <DependentUpon>objectViewerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ObjectViewerForm.resx">
+      <DependentUpon>ObjectViewerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\settingsForm.resx">
-      <DependentUpon>settingsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\teleportForm.resx">
-      <DependentUpon>teleportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\whisperForm.resx">
-      <DependentUpon>whisperForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\WhisperForm.resx">
+      <DependentUpon>WhisperForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <EmbeddedResource Include="app.manifest">

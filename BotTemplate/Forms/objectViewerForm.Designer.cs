@@ -1,6 +1,6 @@
 ﻿namespace BotTemplate.Forms
 {
-    partial class objectViewerForm
+    partial class ObjectViewerForm
     {
         /// <summary>
         /// Required designer variable.

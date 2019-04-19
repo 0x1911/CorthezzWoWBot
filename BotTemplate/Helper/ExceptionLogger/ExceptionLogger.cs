@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
@@ -157,59 +156,6 @@ namespace Utilities
             }
         }
 
-        /// <summary>
-        /// Return machine current uptime in seconds
-        /// </summary>
-        /// <returns>427809</returns>
-        public static TimeSpan GetSystemUpTime()
-        {
-            var ticks = Stopwatch.GetTimestamp();
-            var uptime = ((double)ticks) / Stopwatch.Frequency;
-            var uptimeSpan = TimeSpan.FromSeconds(uptime);
-
-            return uptimeSpan;
-        }
-
-        /// <summary>
-        /// Returns a human readable time string
-        /// </summary>
-        /// <returns>01d, 12h, 30m, 26s</returns>
-        public static string GetSystemUpTimeString()
-        {
-            TimeSpan t = TimeSpan.FromSeconds(GetSystemUpTime().TotalSeconds);
-
-            string answer = string.Format("{0:D2}d, {1:D2}h, {2:D2}m, {3:D2}s",
-                            t.Days,
-                            t.Hours,
-                            t.Minutes,
-                            t.Seconds);
-
-            return answer;
-        }
-        
-        // use to get memory available
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        private class MEMORYSTATUSEX
-        {
-            public uint dwLength;
-            public uint dwMemoryLoad;
-            public ulong ullTotalPhys;
-            public ulong ullAvailPhys;
-            public ulong ullTotalPageFile;
-            public ulong ullAvailPageFile;
-            public ulong ullTotalVirtual;
-            public ulong ullAvailVirtual;
-            public ulong ullAvailExtendedVirtual;
-
-            public MEMORYSTATUSEX()
-            {
-                this.dwLength = (uint)Marshal.SizeOf(typeof(MEMORYSTATUSEX));
-            }
-        }
-
-        [return: MarshalAs(UnmanagedType.Bool)]
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        static extern bool GlobalMemoryStatusEx([In, Out] MEMORYSTATUSEX lpBuffer);
 
         /// <summary>writes exception details to the registered loggers</summary>
         /// <param name="exception">The exception to log.</param>
@@ -218,32 +164,23 @@ namespace Utilities
             StringBuilder error = new StringBuilder();
 
             error.AppendLine("Application:       " + Application.ProductName);
-            error.AppendLine("Version:           " + Application.ProductVersion);
+            error.AppendLine("Version:           " + BotTemplate.Helper.MachineInfo.GetAssemblyVersion());
             error.AppendLine("Date:              " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
             error.AppendLine("Computer name:     " + SystemInformation.ComputerName);
             error.AppendLine("User name:         " + SystemInformation.UserName);
             error.AppendLine("OS:                " + Environment.OSVersion.ToString());
             error.AppendLine("Culture:           " + CultureInfo.CurrentCulture.Name);
             error.AppendLine("Resolution:        " + SystemInformation.PrimaryMonitorSize.ToString());
-            error.AppendLine("System up time:    " + GetSystemUpTimeString());
-            error.AppendLine("App up time:       " +
-              (DateTime.Now - Process.GetCurrentProcess().StartTime).ToString());
-
-            MEMORYSTATUSEX memStatus = new MEMORYSTATUSEX();
-            if (GlobalMemoryStatusEx(memStatus))
-            {
-                error.AppendLine("Total memory:      " + memStatus.ullTotalPhys / (1024 * 1024) + "Mb");
-                error.AppendLine("Available memory:  " + memStatus.ullAvailPhys / (1024 * 1024) + "Mb");
-            }
-
+            error.AppendLine("System uptime:    " + BotTemplate.Helper.MachineInfo.GetSystemUpTimeString());
+            error.AppendLine("App uptime:       " + (DateTime.Now - Process.GetCurrentProcess().StartTime).ToString());
+            error.AppendLine("Total memory:      " + BotTemplate.Helper.MachineInfo.GetTotalMemory() + " Mb");
+            error.AppendLine("Available memory:  " + BotTemplate.Helper.MachineInfo.GetAvailableMemory() + " Mb");            
             error.AppendLine("");
-
             error.AppendLine("Exception classes:   ");
             error.Append(GetExceptionTypeStack(exception));
             error.AppendLine("");
             error.AppendLine("Exception messages: ");
             error.Append(GetExceptionMessageStack(exception));
-
             error.AppendLine("");
             error.AppendLine("Stack Traces:");
             error.Append(GetExceptionCallStack(exception));

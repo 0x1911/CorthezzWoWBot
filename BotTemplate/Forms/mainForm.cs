@@ -17,12 +17,13 @@ using BotTemplate.Engines.Master;
 using BotTemplate.Engines.Networking;
 using BotTemplate.Engines.Stockades;
 using System.Text;
+using System.Reflection;
 
 namespace BotTemplate.Forms
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
-        public mainForm()
+        public MainForm()
         {
             InitializeComponent();
             CCManager.Initialisate();
@@ -79,10 +80,10 @@ namespace BotTemplate.Forms
         {
             if (ObjectManager.getObjThread.IsAlive == false)
             {
-                attachForm att = new attachForm();
+                AttachForm att = new AttachForm();
                 att.ShowDialog();
 
-                if (attachForm.isAttached)
+                if (AttachForm.isAttached)
                 {
                     if (!Inject.isHookApplied)
                     {
@@ -129,6 +130,7 @@ namespace BotTemplate.Forms
             }
         }
 
+        #region Engine Handling - Start & Stop
         private void bStart_Click(object sender, EventArgs e)
         {
             if (ObjectManager.getObjThread.IsAlive)
@@ -196,6 +198,22 @@ namespace BotTemplate.Forms
             else
             {
                 MessageBox.Show("Attach Objectmanager first");
+            }
+        }
+        private void bStopBot_Click(object sender, EventArgs e)
+        {
+            if (Exchange.IsEngineRunning)
+            {
+                stopGrind();
+                stopMaster();
+                stopAssist();
+                stopFishbot();
+                stopExplorer();
+                Calls.StopRunning();
+            }
+            else
+            {
+                MessageBox.Show("No bot running");
             }
         }
 
@@ -343,29 +361,14 @@ namespace BotTemplate.Forms
             ChatReader.runThread = true;
             ChatReader.readChatThread.Start();
         }
+        #endregion
+
 
         private void bSettings_Click(object sender, EventArgs e)
         {
-            settingsForm stForm = new settingsForm();
+            SettingsForm stForm = new SettingsForm();
             DialogResult test = stForm.ShowDialog();
-        }
-
-        private void bStopBot_Click(object sender, EventArgs e)
-        {
-            if (Exchange.IsEngineRunning)
-            {
-                stopGrind();
-                stopMaster();
-                stopAssist();
-                stopFishbot();
-                stopExplorer();
-                Calls.StopRunning();
-            }
-            else
-            {
-                MessageBox.Show("No bot running");
-            }
-        }
+        }        
 
         [DllImport("user32.dll")]
         private static extern int ShowWindow(IntPtr hwnd, int command);
@@ -385,12 +388,14 @@ namespace BotTemplate.Forms
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            lbl_Version.Text = "v." + BotTemplate.Helper.MachineInfo.GetAssemblyVersion();
+
             Data.LoadAllSettings();
         }
 
         private void bLog_Click(object sender, EventArgs e)
         {
-            whisperForm whsp = new whisperForm();
+            WhisperForm whsp = new WhisperForm();
             whsp.ShowDialog();
         }
 
@@ -463,7 +468,7 @@ namespace BotTemplate.Forms
                     if (ObjectManager.playerPtr != 0)
                     {
                         this.Hide();
-                        objectViewerForm form = new objectViewerForm();
+                        ObjectViewerForm form = new ObjectViewerForm();
                         form.ShowDialog();
                         this.Show();
                     }
@@ -534,32 +539,11 @@ namespace BotTemplate.Forms
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show(ObjectManager.IsUnitOnGroup(ObjectManager.TargetObject.targetGuid, false, 100).ToString());
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            MessageBox.Show(Calls.GetText("money = GetMoney();", "money", 10));
-        }
-
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
-        private void bOrb_Click(object sender, EventArgs e)
-        {
-            Ingame.Tele(new Objects.Location(41.8915f, -285.414f, 105.958f), 60, false);
-            Calls.OnRightClickObject(ObjectManager.GetGameObjectByName("Drakkisath's Brand").baseAdd, 1);
-        }
-
-        private void bMc_Click(object sender, EventArgs e)
-        {
-            Ingame.Tele(new Objects.Location(41.8915f, -285.414f, 105.958f), 60, false);
-        }
-
+        
         private void bAddUp_Click(object sender, EventArgs e)
         {
             float x = ObjectManager.PlayerObject.Pos.x +(float)1 * (float)Math.Cos(ObjectManager.Facing);

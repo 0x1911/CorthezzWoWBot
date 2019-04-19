@@ -1,6 +1,6 @@
 ﻿namespace BotTemplate.Forms
 {
-    partial class whisperForm
+    partial class WhisperForm
     {
         /// <summary>
         /// Required designer variable.

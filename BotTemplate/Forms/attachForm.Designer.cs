@@ -1,6 +1,6 @@
 ﻿namespace BotTemplate.Forms
 {
-    partial class attachForm
+    partial class AttachForm
     {
         /// <summary>
         /// Required designer variable.

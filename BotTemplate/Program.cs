@@ -25,7 +25,7 @@ namespace BotTemplate
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainForm());
+            Application.Run(new MainForm());
         }
 
         static void OnProcessExit(object sender, EventArgs e)

@@ -9,7 +9,7 @@ using BotTemplate.Interact;
 
 namespace BotTemplate.Forms
 {
-    public partial class attachForm : Form
+    public partial class AttachForm : Form
     {
 
         private List<string> playerNames = new List<string>();
@@ -52,7 +52,7 @@ namespace BotTemplate.Forms
         }
 
         internal static bool isAttached;
-        public attachForm()
+        public AttachForm()
         {
             InitializeComponent();
             isAttached = false;

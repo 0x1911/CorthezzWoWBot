@@ -12,9 +12,9 @@ using System.Globalization;
 
 namespace BotTemplate.Forms
 {
-    public partial class objectViewerForm : Form
+    public partial class ObjectViewerForm : Form
     {
-        public objectViewerForm()
+        public ObjectViewerForm()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using BotTemplate.Interact;
 
 namespace BotTemplate.Forms
 {
-    public partial class whisperForm : Form
+    public partial class WhisperForm : Form
     {
-        public whisperForm()
+        public WhisperForm()
         {
             InitializeComponent();
             List<Objects.ChatMessage> tmpChat = ChatReader.ChatMessageList;

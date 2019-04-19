@@ -13,7 +13,6 @@ namespace BotTemplate.Helper
             return versionString;
         }
 
-
         /// <summary>
         /// Return machine current uptime in seconds
         /// </summary>

@@ -48,7 +48,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lbl_Version = new System.Windows.Forms.Label();
             this.rbFishbot = new System.Windows.Forms.RadioButton();
             this.rbAssist = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -70,9 +69,9 @@
             this.mtbX = new System.Windows.Forms.MaskedTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tbLog = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
+            this.rtb_MainLog = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -254,15 +253,15 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(310, 382);
+            this.tabControl1.Size = new System.Drawing.Size(337, 415);
             this.tabControl1.TabIndex = 33;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lbl_Version);
             this.tabPage1.Controls.Add(this.rbFishbot);
             this.tabPage1.Controls.Add(this.rbAssist);
             this.tabPage1.Controls.Add(this.lPid);
@@ -285,19 +284,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(302, 356);
+            this.tabPage1.Size = new System.Drawing.Size(329, 389);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // lbl_Version
-            // 
-            this.lbl_Version.AutoSize = true;
-            this.lbl_Version.Location = new System.Drawing.Point(245, 334);
-            this.lbl_Version.Name = "lbl_Version";
-            this.lbl_Version.Size = new System.Drawing.Size(49, 13);
-            this.lbl_Version.TabIndex = 36;
-            this.lbl_Version.Text = "v.0.0.0.0";
             // 
             // rbFishbot
             // 
@@ -342,7 +332,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(302, 356);
+            this.tabPage2.Size = new System.Drawing.Size(329, 389);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dev";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -500,32 +490,21 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(302, 356);
+            this.tabPage3.Size = new System.Drawing.Size(329, 389);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Misc";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.tbLog);
+            this.tabPage4.Controls.Add(this.rtb_MainLog);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(302, 356);
+            this.tabPage4.Size = new System.Drawing.Size(329, 389);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tbLog
-            // 
-            this.tbLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLog.Location = new System.Drawing.Point(18, 18);
-            this.tbLog.Multiline = true;
-            this.tbLog.Name = "tbLog";
-            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbLog.Size = new System.Drawing.Size(245, 267);
-            this.tbLog.TabIndex = 0;
-            this.tbLog.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // tabPage5
             // 
@@ -533,7 +512,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(302, 356);
+            this.tabPage5.Size = new System.Drawing.Size(329, 389);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "About";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -547,7 +526,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             // 
-            // mainForm
+            // rtb_MainLog
+            // 
+            this.rtb_MainLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtb_MainLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_MainLog.Location = new System.Drawing.Point(3, 3);
+            this.rtb_MainLog.Name = "rtb_MainLog";
+            this.rtb_MainLog.ReadOnly = true;
+            this.rtb_MainLog.Size = new System.Drawing.Size(323, 383);
+            this.rtb_MainLog.TabIndex = 0;
+            this.rtb_MainLog.Text = "";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -555,8 +545,8 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "mainForm";
-            this.Text = "mainForm";
+            this.Name = "MainForm";
+            this.Text = "NoVanillaBot";
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -564,7 +554,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
@@ -607,7 +596,6 @@
         private System.Windows.Forms.Button bToFile;
         private System.Windows.Forms.Button bLogin;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bAddUp;
@@ -616,7 +604,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        public System.Windows.Forms.Label lbl_Version;
+        private System.Windows.Forms.RichTextBox rtb_MainLog;
     }
 }
 

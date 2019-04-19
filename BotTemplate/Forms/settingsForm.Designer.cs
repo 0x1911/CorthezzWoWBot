@@ -232,6 +232,7 @@
             // 
             this.mtbPw.Location = new System.Drawing.Point(82, 42);
             this.mtbPw.Name = "mtbPw";
+            this.mtbPw.PasswordChar = '*';
             this.mtbPw.Size = new System.Drawing.Size(99, 20);
             this.mtbPw.TabIndex = 16;
             this.mtbPw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EventOnlyLetterDigit);
@@ -560,7 +561,7 @@
             this.lConnectPort.Text = "Use Port:";
             this.lConnectPort.Click += new System.EventHandler(this.lConnectPort_Click);
             // 
-            // settingsForm
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -570,7 +571,7 @@
             this.Controls.Add(this.bSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "settingsForm";
+            this.Name = "SettingsForm";
             this.Text = "settingsForm";
             ((System.ComponentModel.ISupportInitialize)(this.nudHealth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMana)).EndInit();

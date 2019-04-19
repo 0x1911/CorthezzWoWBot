@@ -53,7 +53,7 @@ namespace BotTemplate.Forms
                 }
 
                 lPid.Text = "Attached to: " + ObjectManager.playerName;
-                this.Text = "mainForm | " + ObjectManager.playerName;
+                SetWindowText(ObjectManager.playerName);
                 lObjTick.Text = "Manager tick: " + (int)ObjectManager.tickRate + " ms";
                 if (Exchange.IsEngineRunning == true)
                 {
@@ -65,7 +65,7 @@ namespace BotTemplate.Forms
             else
             {
                 lPid.Text = "Attached to: -";
-                this.Text = "mainForm";
+                SetWindowText(null);
             }
             if (Exchange.IsEngineRunning == false)
             {
@@ -73,7 +73,11 @@ namespace BotTemplate.Forms
                 lState.Text = "State: None";
             }
             lProfile.Text = "Profile: " + Data.profileName;
-            tbLog.AppendText(Log.get);
+            foreach(string tmpString in Log.get)
+            {
+                rtb_MainLog.AppendText(tmpString);
+            }
+            Log.CleanUp();
         }
 
         private void bAttach_Click(object sender, EventArgs e)
@@ -386,9 +390,22 @@ namespace BotTemplate.Forms
             if (BmWrapper.memory.IsProcessOpen) ShowWindow(BmWrapper.memory.WindowHandle, SW_SHOW);
         }
 
+        private void SetWindowText(string playerName)
+        {
+            if(string.IsNullOrEmpty(playerName))
+            {
+                this.Text =  "NoVanillaBot v." + BotTemplate.Helper.MachineInfo.GetAssemblyVersion();
+                return;
+            }
+
+
+            this.Text = "[" + playerName + "] NoVanillaBot v." + BotTemplate.Helper.MachineInfo.GetAssemblyVersion();
+
+        }
         private void mainForm_Load(object sender, EventArgs e)
         {
-            lbl_Version.Text = "v." + BotTemplate.Helper.MachineInfo.GetAssemblyVersion();
+            Log.Add("Starting up..");
+            SetWindowText(null);
 
             Data.LoadAllSettings();
         }

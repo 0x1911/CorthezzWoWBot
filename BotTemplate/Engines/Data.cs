@@ -120,33 +120,51 @@ namespace BotTemplate.Engines
                 {
                     File.Delete(settingsPath);
                     Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
+                    Forms.Log.Add("Settings file seems corrupted.. Created a new one.");
                 }
+
+
+                Forms.Log.Add("Loaded base settings.");
             }
             else
             {
                 Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
+                Forms.Log.Add("Couldn't find base settings. Created a new one.");
             }
             #endregion
 
             #region load Protected items Settings
             if (!Data.protectedExist)
+            {               
+                Data.SaveProtected(new string[] { "" });
+
+                loadedAll = false;
+                Forms.Log.Add("Protected items settings not found..");
+            }
+            else
             {
                 string protectedItemsSettings = Tools.DecodeFrom64(File.ReadAllText(protectedPath));
                 string[] settings2 = protectedItemsSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                Data.SaveProtected(new string[] { "" });
 
-                loadedAll =  false;
+                Forms.Log.Add("Protected items settings loaded.");
             }
             #endregion
 
             #region load mailer settings
             if (!Data.mailerExist)
-            {
-                string mailSettings = Tools.DecodeFrom64(File.ReadAllText(mailerPath));
-                string[] settings3 = mailSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            {                
                 Data.SaveMailer(new string[] { "" });
 
                 loadedAll = false;
+                Forms.Log.Add("Mail settings not found..");
+            }
+            else
+            {
+                string mailSettings = Tools.DecodeFrom64(File.ReadAllText(mailerPath));
+                string[] settings3 = mailSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+
+                Forms.Log.Add("Mail settings loaded.");
+
             }
             #endregion
 

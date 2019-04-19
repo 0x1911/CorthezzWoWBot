@@ -57,7 +57,7 @@ namespace BotTemplate.Engines
         internal static string settingsPath = ".\\settings.ini";
         internal static string protectedPath = ".\\protected.ini";
         internal static string mailerPath = ".\\mailer.ini";
-        internal static bool settingsExist
+        internal static bool baseSettingsExist
         {
             get
             {
@@ -82,17 +82,16 @@ namespace BotTemplate.Engines
         }
         #endregion
 
-        #region load the settings
-        internal static bool LoadSettings()
+        #region load the base, protected, mail setting files
+        internal static bool LoadAllSettings()
         {
-            if (settingsExist)
+            bool loadedAll = true;
+
+            #region base settings
+            if (baseSettingsExist)
             {
-                string tmpSettings = Tools.DecodeFrom64(File.ReadAllText(settingsPath));
-                string tmpSettings2 = Tools.DecodeFrom64(File.ReadAllText(protectedPath));
-                string tmpSettings3 = Tools.DecodeFrom64(File.ReadAllText(mailerPath));
-                string[] settings = tmpSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                string[] settings2 = tmpSettings2.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                string[] settings3 = tmpSettings3.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                string baseSettings = Tools.DecodeFrom64(File.ReadAllText(settingsPath));
+                string[] settings = baseSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 
                 try
                 {
@@ -121,17 +120,37 @@ namespace BotTemplate.Engines
                 {
                     File.Delete(settingsPath);
                     Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
-                    MessageBox.Show("Settings are corrupted. Deleted settings.ini and creating new one..");
-                    return false;
                 }
-                return true;
             }
             else
             {
                 Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
-                MessageBox.Show("Couldn't find settings file", "  Created new settings file!");
-                return false;
             }
+            #endregion
+
+            #region load Protected items Settings
+            if (!Data.protectedExist)
+            {
+                string protectedItemsSettings = Tools.DecodeFrom64(File.ReadAllText(protectedPath));
+                string[] settings2 = protectedItemsSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                Data.SaveProtected(new string[] { "" });
+
+                loadedAll =  false;
+            }
+            #endregion
+
+            #region load mailer settings
+            if (!Data.mailerExist)
+            {
+                string mailSettings = Tools.DecodeFrom64(File.ReadAllText(mailerPath));
+                string[] settings3 = mailSettings.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                Data.SaveMailer(new string[] { "" });
+
+                loadedAll = false;
+            }
+            #endregion
+
+            return loadedAll;
         }
         #endregion
 
@@ -165,7 +184,7 @@ namespace BotTemplate.Engines
             set += parPort.ToString() + Environment.NewLine;
             
             File.WriteAllText(settingsPath, Tools.EncodeTo64(set));
-            LoadSettings();
+            LoadAllSettings();
         }
 
         internal static void SaveProtected(string[] parProtectedItems)
@@ -180,7 +199,7 @@ namespace BotTemplate.Engines
                 }
             }
             File.WriteAllText(protectedPath, Tools.EncodeTo64(set2));
-            LoadSettings();
+            LoadAllSettings();
 
         }
 
@@ -196,7 +215,7 @@ namespace BotTemplate.Engines
                 }
             }
             File.WriteAllText(mailerPath, Tools.EncodeTo64(set2));
-            LoadSettings();
+            LoadAllSettings();
         }
         #endregion
 

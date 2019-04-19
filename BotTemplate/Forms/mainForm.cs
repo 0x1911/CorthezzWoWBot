@@ -139,7 +139,7 @@ namespace BotTemplate.Forms
 
                 if (ObjectManager.playerPtr != 0)
                 {
-                    if (Data.LoadSettings())
+                    if (Data.LoadAllSettings())
                     {
                         if (!Exchange.IsEngineRunning)
                         {
@@ -346,34 +346,8 @@ namespace BotTemplate.Forms
 
         private void bSettings_Click(object sender, EventArgs e)
         {
-            if (Data.settingsExist)
-            {
-                if (Data.protectedExist)
-                {
-                    if (Data.mailerExist)
-                    {
-                        if (Data.LoadSettings())
-                        {
-                            settingsForm stForm = new settingsForm();
-                            DialogResult test = stForm.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        Data.SaveMailer(new string[] { "" });
-                    }
-                }
-                else
-                {
-                    Data.SaveProtected(new string[] { "" });
-                }
-            }
-            else
-            {
-                Data.SaveSettings(0, 0, 0, 0, "", "", 0, "", "", 0, "", false, false, false, false, false, false, "0");
-                MessageBox.Show("Settings recreated, hit Settings again", "Recreated");
-            }
-
+            settingsForm stForm = new settingsForm();
+            DialogResult test = stForm.ShowDialog();
         }
 
         private void bStopBot_Click(object sender, EventArgs e)
@@ -409,23 +383,9 @@ namespace BotTemplate.Forms
             if (BmWrapper.memory.IsProcessOpen) ShowWindow(BmWrapper.memory.WindowHandle, SW_SHOW);
         }
 
-        private void teleButton_Click(object sender, EventArgs e)
-        {
-            if (ObjectManager.getObjThread.IsAlive)
-            {
-                if (!Exchange.IsEngineRunning)
-                {
-                    this.Hide();
-                    teleportForm f1 = new teleportForm();
-                    f1.ShowDialog();
-                    this.Show();
-                }
-            }
-        }
-
         private void mainForm_Load(object sender, EventArgs e)
         {
-            Data.LoadSettings();
+            Data.LoadAllSettings();
         }
 
         private void bLog_Click(object sender, EventArgs e)

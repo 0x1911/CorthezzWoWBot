@@ -45,7 +45,6 @@
             this.lObjTick = new System.Windows.Forms.Label();
             this.bLog = new System.Windows.Forms.Button();
             this.rExplorer = new System.Windows.Forms.RadioButton();
-            this.teleButton = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -237,16 +236,6 @@
             this.rExplorer.Text = "Explorer";
             this.rExplorer.UseVisualStyleBackColor = true;
             // 
-            // teleButton
-            // 
-            this.teleButton.Location = new System.Drawing.Point(103, 216);
-            this.teleButton.Name = "teleButton";
-            this.teleButton.Size = new System.Drawing.Size(79, 33);
-            this.teleButton.TabIndex = 29;
-            this.teleButton.Text = "Teleport";
-            this.teleButton.UseVisualStyleBackColor = false;
-            this.teleButton.Click += new System.EventHandler(this.teleButton_Click);
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -280,7 +269,6 @@
             this.tabPage1.Controls.Add(this.bAttach);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.bDeattach);
-            this.tabPage1.Controls.Add(this.teleButton);
             this.tabPage1.Controls.Add(this.bStart);
             this.tabPage1.Controls.Add(this.rExplorer);
             this.tabPage1.Controls.Add(this.bLog);
@@ -601,7 +589,6 @@
         private System.Windows.Forms.Label lObjTick;
         private System.Windows.Forms.Button bLog;
         private System.Windows.Forms.RadioButton rExplorer;
-        private System.Windows.Forms.Button teleButton;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
